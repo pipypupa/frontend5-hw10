@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { nanoid } from "nanoid";
 import ContactForm from "../src/Components/ContactForm";
 import ContactList from "../src/Components/ContactList";
 import Filter from "../src/Components/Filter";
@@ -16,6 +15,10 @@ class App extends Component {
     filter: "",
   };
 
+  generateId = () => {
+    return Date.now().toString() + Math.random().toString(16).slice(2);
+  };
+
   addContact = (name, number) => {
     const normalizedName = name.toLowerCase();
 
@@ -29,7 +32,7 @@ class App extends Component {
     }
 
     const newContact = {
-      id: nanoid(),
+      id: this.generateId(),
       name,
       number,
     };
